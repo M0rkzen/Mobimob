@@ -8,19 +8,12 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "Imobile")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Proprietate {
-    public enum TipImobil {
-        CASA,
-        APARTAMENT,
-        DUPLEX,
-        TEREN
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated(EnumType.STRING)
     @Column(name = "tipImobil")
-    private TipImobil tipImobil;
+    private String tipImobil;
     @Column(name = "pret")
     private String pret;
     @NotNull(message = "Imobilul necesita o locatie")
@@ -29,6 +22,8 @@ public class Proprietate {
     @NotNull(message = "Este necesara o persoana de contact")
     private String persoanaContact;
     private String telefon;
+    @Column(name = "disponibil")
+    private boolean disponibil;
 
     public Long getId() {
         return id;
@@ -38,11 +33,11 @@ public class Proprietate {
         this.id = id;
     }
 
-    public TipImobil getTipImobil() {
+    public String getTipImobil() {
         return tipImobil;
     }
 
-    public void setTipImobil(TipImobil tipImobil) {
+    public void setTipImobil(String tipImobil) {
         this.tipImobil = tipImobil;
     }
 
@@ -78,13 +73,22 @@ public class Proprietate {
         this.telefon = telefon;
     }
 
-    public Proprietate(Long id, TipImobil tipImobil, String pret, String locatie, String persoanaContact, String telefon) {
+    public boolean isDisponibil() {
+        return disponibil;
+    }
+
+    public void setDisponibil(boolean disponibil) {
+        this.disponibil = disponibil;
+    }
+
+    public Proprietate(Long id, String tipImobil, String pret, String locatie, String persoanaContact, String telefon, boolean disponibil) {
         this.id = id;
         this.tipImobil = tipImobil;
         this.pret = pret;
         this.locatie = locatie;
         this.persoanaContact = persoanaContact;
         this.telefon = telefon;
+        this.disponibil = disponibil;
     }
 
     public Proprietate() {
