@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface ProprietateRepository extends JpaRepository<Proprietate, Long> {
 
-    //List<Proprietate> findImobilLocatieSiPret(String locatie, String pret);
-//    List<Proprietate> findTipImobil(String tipImobil);
+    List<Proprietate> findProprietateByLocatie(String locatie);
+    List<Proprietate> findProprietateByPret(String pret);
 }
