@@ -43,6 +43,7 @@ public class ProprietateService {
         return null;
     }
 
+
     public Proprietate updateProprietate(Long proprietateId, Proprietate updatedProprietate) {
         Optional<Proprietate> optionalProprietate = proprietateRepository.findById(proprietateId);
         if (optionalProprietate.isPresent()) {
@@ -53,10 +54,8 @@ public class ProprietateService {
             existingProprietate.setPersoanaContact(updatedProprietate.getPersoanaContact());
             existingProprietate.setTelefon(updatedProprietate.getTelefon());
             existingProprietate.setDisponibil(updatedProprietate.isDisponibil());
-
             return proprietateRepository.save(existingProprietate);
         } else {
-            // Tratarea cazului în care proprietatea nu a fost găsită
             return null;
         }
     }

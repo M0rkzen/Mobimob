@@ -12,5 +12,4 @@ public interface ProprietateRepository extends JpaRepository<Proprietate, Long> 
 
     List<Proprietate> findProprietateByLocatie(String locatie);
     List<Proprietate> findProprietateByPret(String pret);
-    List<Proprietate> findByDisponibil(boolean disponibil);
 }
