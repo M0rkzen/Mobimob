@@ -39,7 +39,7 @@ public class ProprietateController {
         } else {
             List<Proprietate> proprietati = proprietateService.getProprietateByFilters(params);
             if (proprietati.isEmpty()) {
-                return new ResponseEntity<>("Nu am găsit nicio proprietate care să corespundă filtrelor furnizate.", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(proprietati, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(proprietati, HttpStatus.OK);
             }
